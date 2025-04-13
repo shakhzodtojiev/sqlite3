@@ -1,0 +1,97 @@
+- Open a SQLite 3 database:
+sqlite3
+
+- Exit a SQLite 3 database:
+Ctrl + D
+
+- SQLite3 database files commonly use the following extensions:
+.db
+.sqlite
+.sqlite3
+.db3
+
+- To open an SQLite3 database file in the command line, use:
+sqlite3 database_name.db
+
+- In SQLite3, after opening a database file with sqlite3 database_name.db, you can list the databases currently connected using:
+.databases
+
+- To see the tables within the current database, use:
+.tables
+
+- This lists all tables in the database. If you want to see the schema of a specific table, use:
+.schema table_name
+
+- To create a table in an SQLite3 database, use the CREATE TABLE statement. Here's the basic syntax and an example:
+* Syntax:
+CREATE TABLE table_name (
+    column1 datatype [constraints],
+    column2 datatype [constraints],
+    ...
+);
+
+* Example:
+CREATE TABLE one_password (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    app_name TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+- In SQLite3, after opening a database file with sqlite3 database_name.db, 
+you can list the databases currently connected using:
+.databases
+/Users/shakhzodtojiev/Downloads/programming/sqlite3/base.sqlite3 r/w
+
+- View Table Schema
+.schema one_password
+CREATE TABLE one_password (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    app_name TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+- For more detailed information about the table's structure:
+PRAGMA table_info(table_name);
+
+This returns a result set with columns like:
+cid: Column ID (index).
+name: Column name.
+type: Datatype (e.g., INTEGER, TEXT).
+notnull: Whether the column is NOT NULL (1 = true, 0 = false).
+dflt_value: Default value (if any).
+pk: Whether the column is part of the primary key (1 = true, 0 = false).
+
+* Example:
+PRAGMA table_info(one_password);
+0|id|INTEGER|0||1
+1|app_name|TEXT|1||0
+2|username|TEXT|1||0
+3|password|TEXT|1||0
+
+Notes:
+.schema is simpler for a quick overview.
+PRAGMA table_info is more detailed and structured.
+To see all tables first, use .tables.
+
+- To insert data into a table in SQLite3, use the INSERT INTO statement.
+* Syntax:
+INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
+* Example
+INSERT INTO one_password (app_name, username, password) VALUES ('Gmail', 'user@gmail.com', 'Pa2s@W0rd#');
+
+- To retrieve data from a table in SQLite3, use the SELECT statement.
+* Basic Syntax:
+SELECT column1, column2, ... FROM table_name;
+
+* Examples:
+SELECT * FROM one_password;
+1|Gmail|user@gmail.com|Pa2s@W0rd#
+
+
+
+Original page
+https://sqlite.org
+Open wikipedia data
+https://en.wikipedia.org/wiki/SQLite
